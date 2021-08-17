@@ -2,6 +2,14 @@
   display: flex;
   justify-content: center;
   padding: 0 3px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  /* 
+  box-sizing -> padding으로 인해 box의 크기가 의도치 않게 늘어날 때
+  박스의 크기를 증가시키지 않는다.
+  */
 }
 .status-bar__column {
   width: 33%;
