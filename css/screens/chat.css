@@ -1,6 +1,6 @@
 #chat-screen {
   background-color: #abc1d1;
-  height: 1000vh;
+  height: 600vh;
 }
 #chat-screen .alt-header {
   position: fixed;
@@ -23,11 +23,23 @@
   background-color: #abc1d1;
 }
 
+@keyframes fadeIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
 .main-chat {
-  margin-top: 130px;
+  margin-top: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 0.8s linear;
 }
 .chats__timestamp {
   color: white;
@@ -105,12 +117,15 @@ order 속성을 지정하여 배치 순서를 바꿀 수 있다.
   padding: 5px 20px;
   align-items: center;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
 }
 .reply__column:first-child {
-  width: 4%;
+  width: 10%;
+  justify-content: center;
+  align-items: center;
 }
 .reply__column:last-child {
-  width: 96%;
+  width: 90%;
   position: relative;
 }
 .reply input {
@@ -120,6 +135,7 @@ order 속성을 지정하여 배치 순서를 바꿀 수 있다.
   width: 100%;
   border: var(--main-border);
   border-radius: 20px;
+  transition: all 0.3s ease-in-out;
 }
 .reply__column:last-child > i,
 .reply__column:last-child button {
@@ -149,15 +165,58 @@ order 속성을 지정하여 배치 순서를 바꿀 수 있다.
   opacity: 1;
 }
 
-@keyframes chatFadeIn {
+@keyframes chatFadeInLeft {
   from {
-    transform: scale(0.5);
+    transform: translateX(-20px);
+    opacity: 0;
   }
   to {
-    transform: scale(1);
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes chatFadeInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
   }
 }
 
-.message__info .message__bubble {
-  animation: chatFadeIn 0.5s ease-in-out forwards;
+.chatFadeIn__Left {
+  opacity: 0;
+  animation: chatFadeInLeft 0.5s ease-in-out forwards;
+  animation-delay: 0.2s;
+}
+.chatFadeIn__Right {
+  opacity: 0;
+  animation: chatFadeInRight 0.5s ease-in-out forwards;
+  animation-delay: 0.4s;
+}
+
+/* reply input의 transition:all ~ 이 실행될 때 실행된다. */
+.reply .reply__column:first-child,
+.reply .fa-smile-wink,
+.reply button {
+  transition: opacity 0.3s ease-in-out;
+  /* 밑의 opacity:0;을 0.3초동안 실행한다. */
+}
+
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-smile-wink,
+.reply:focus-within button {
+  /* reply:focus-within -> reply 내부에 어떤 element가 focus 되어 있다면 */
+  opacity: 0;
+}
+
+.reply:focus-within input {
+  width: 96vw;
+  transform: translateX(-12%) translateY(-60px);
+}
+
+.reply:focus-within {
+  transform: translateY(60px);
 }
