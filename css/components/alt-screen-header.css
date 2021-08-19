@@ -31,3 +31,6 @@
 .alt-header__column {
   width: 33%;
 }
+.alt-header--setting {
+  background-color: white;
+}

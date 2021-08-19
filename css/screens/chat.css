@@ -18,8 +18,8 @@
     z-index의 값이 큰게 더 앞에 위치한다.
     */
 }
-.alt-header,
-.status-bar {
+.alt-header--chat,
+.status-bar--chat {
   background-color: #abc1d1;
 }
 

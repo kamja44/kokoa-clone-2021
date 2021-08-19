@@ -24,3 +24,37 @@
   justify-content: space-between;
   color: rgba(0, 0, 0, 0.6);
 }
+
+@keyframes hideSplashScreen {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    /* visibility: hidden;
+      마우스가 가리고 있는 창을 통과해서 선택할 수 있게 한다.
+    */
+  }
+}
+
+#splash-screen {
+  background-color: var(--yellow);
+  position: absolute;
+  height: 100vh;
+  /* 100vh -> 화면 높이의 100% */
+  width: 100vw;
+  /* 100vw -> 화면 넓이의 100% */
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 132px;
+  animation: hideSplashScreen 0.4s ease-in-out forwards;
+  /* 
+  forwards -> 마지막 속성값은 마지막 keyframes으로 정해지고
+  애니메이션이 끝나고 유지한다. 즉, opacity=0으로 적용된다.
+   */
+  animation-delay: 2s;
+  /* animation 2초 후 실행 */
+}
