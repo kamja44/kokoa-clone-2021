@@ -148,3 +148,16 @@ order 속성을 지정하여 배치 순서를 바꿀 수 있다.
 .reply__column button i {
   opacity: 1;
 }
+
+@keyframes chatFadeIn {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.message__info .message__bubble {
+  animation: chatFadeIn 0.5s ease-in-out forwards;
+}
